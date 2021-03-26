@@ -14,8 +14,11 @@ public class Player {
     int y = 480;
     int dy = 0;
 
-    Image image = new ImageIcon("res/player.png").getImage();
+    Image image_C = new ImageIcon("res/player.png").getImage();
+    Image image_L = new ImageIcon("res/player_left.png").getImage();
+    Image image_R = new ImageIcon("res/player_right.png").getImage();
 
+    Image image = image_C;
 
     public Rectangle getRec() {
         return new Rectangle(x,y,150,53);
@@ -51,16 +54,19 @@ public class Player {
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_RIGHT) {
             dv = 1;
+
         }
         if (key == KeyEvent.VK_LEFT) {
             dv = -1;
+
         }
         if (key == KeyEvent.VK_UP) {
             dy = 5;
-
+            image = image_L;
         }
         if (key == KeyEvent.VK_DOWN) {
             dy = -5;
+            image = image_R;
         }
     }
 
@@ -71,6 +77,7 @@ public class Player {
         }
         if (key == KeyEvent.VK_UP || key == KeyEvent.VK_DOWN) {
             dy = 0;
+            image = image_C;
         }
 
     }

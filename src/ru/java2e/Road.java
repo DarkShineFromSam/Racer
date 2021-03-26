@@ -72,7 +72,7 @@ public class Road extends JPanel implements ActionListener, Runnable{
     private void testCollisionWithEnemies() {
 
         Iterator<Enemy> i  = enemies.iterator();
-        while (i.hasNext()) {
+        for (Enemy enemy: enemies) {
             Enemy e = i.next();
             if (player.getRec().intersects(e.getRect())){
                 JOptionPane.showMessageDialog(null,"Вы проиграли!");
@@ -87,7 +87,7 @@ public class Road extends JPanel implements ActionListener, Runnable{
         while (true) {
             Random random = new Random();
             try {
-                Thread.sleep(random.nextInt(2000));
+                Thread.sleep(random.nextInt(2500));
                 int randY = 490 + random.nextInt(725 - 490 +1);
                 enemies.add(new Enemy(1300,randY,random.nextInt(49),this));
 
